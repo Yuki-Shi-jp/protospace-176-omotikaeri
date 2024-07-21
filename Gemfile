@@ -76,4 +76,5 @@ group :development do
 end
 
 gem 'devise'
-# true
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
