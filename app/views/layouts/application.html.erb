@@ -23,7 +23,7 @@
           <%# ログインしているときは以下を表示するようにしましょう %>
             <div class="nav__right">
               <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :nav__logout %>
-              <%= link_to "New Proto", root_path, class: :nav__btn %>
+              <%= link_to "New Proto", new_prototype_path, class: :nav__btn %>
             </div>
 
             <%# ログインしていないときは以下を表示するようにしましょう %>
