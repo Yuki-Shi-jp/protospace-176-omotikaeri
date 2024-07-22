@@ -8,7 +8,7 @@ development:
   username: root
   password:
   host: localhost
-  database: protospace-176-omotikaeri_development
+  database: protospace_176_omotikaeri_development
 
 test:
   <<: *default
@@ -16,7 +16,7 @@ test:
   username: root
   password:
   host: localhost
-  database: protospace-176-omotikaeri_test
+  database: protospace_176_omotikaeri_test
 
 production:
   <<: *default
