@@ -6,7 +6,7 @@ class Prototype < ApplicationRecord
   validates :image, presence: true
 
   # アソシエーション
-  belongs_to :user
+  has_many :user
   has_one_attached :image
   has_many :comments, dependent: :destroy
 end
