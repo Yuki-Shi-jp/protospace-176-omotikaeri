@@ -5,11 +5,18 @@ class PrototypesController < ApplicationController
 
   def new
     @prototype = Prototype.new
+   
   end
 
   def create
     Prototype.create(prototype_params)
-    redirect_to '/'
+     # new protで空白を入力するとその場所にとどまる
+    #  if @prototype.save
+      # redirect_to root_path
+    # else
+      # render :new, status: :unprocessable_entity
+    # end
+     redirect_to '/'
   end
 
   def show
