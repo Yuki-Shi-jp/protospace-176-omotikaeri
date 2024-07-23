@@ -24,6 +24,7 @@ class PrototypesController < ApplicationController
   def update
     # 空白文字を入力するとその場所にとどまる
     prototype = Prototype.find(params[:id])
+    # prototype.update(prototype_params)
     if  prototype.update(prototype_params)
         redirect_to root_path
     else
