@@ -1,4 +1,7 @@
 class PrototypesController < ApplicationController
+  # ユーザーじゃない人がindex show以外にアクセスすると実行する関数
+  before_action :move_to_index, except:[:index, :show]
+
   def index
     @prototypes = Prototype.all
   end
@@ -47,8 +50,15 @@ class PrototypesController < ApplicationController
   end
 
   private
-
   def prototype_params
     params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
   end
+
+  # 直接url入力するとリダイレクトで初期画面に飛ぶ
+  def move_to_index
+    unless user_signed_in?
+      redirect_to action: :index
+    end
+  end
+
 end
