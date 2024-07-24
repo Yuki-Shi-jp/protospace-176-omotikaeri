@@ -5,7 +5,7 @@ class PrototypesController < ApplicationController
   # ユーザーじゃない人がindex show以外にアクセスすると実行する関数
 
   def index
-    @prototype = Prototype.all
+    @prototypes = Prototype.all
   end
 
   def new
