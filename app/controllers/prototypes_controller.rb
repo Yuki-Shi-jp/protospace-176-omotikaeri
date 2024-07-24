@@ -1,22 +1,21 @@
 class PrototypesController < ApplicationController
   def index
-    @prototypes = Prototype.all
+    @prototype = Prototype.all
   end
 
   def new
     @prototype = Prototype.new
-   
   end
 
   def create
     Prototype.create(prototype_params)
-     # new protで空白を入力するとその場所にとどまる
+    # new protで空白を入力するとその場所にとどまる
     #  if @prototype.save
-      # redirect_to root_path
+    # redirect_to root_path
     # else
-      # render :new, status: :unprocessable_entity
+    # render :new, status: :unprocessable_entity
     # end
-     redirect_to '/'
+    redirect_to '/'
   end
 
   def show
@@ -33,8 +32,8 @@ class PrototypesController < ApplicationController
     # 空白文字を入力するとその場所にとどまる
     prototype = Prototype.find(params[:id])
     # prototype.update(prototype_params)
-    if  prototype.update(prototype_params)
-        redirect_to root_path
+    if prototype.update(prototype_params)
+      redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
     end
