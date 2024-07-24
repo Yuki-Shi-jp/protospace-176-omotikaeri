@@ -8,6 +8,6 @@
       <%= prototype.catch_copy %>
     </p>
     <%# ネームを選択するとリンクが詳細ページ %>
-    <%= link_to prototype.user.name, prototype_path(prototype.id), class: :card__user %>
+    <%= link_to prototype.user.name, user_path(prototype.user_id), class: :card__user %>
   </div>
 </div>
