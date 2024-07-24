@@ -3,15 +3,15 @@ class PrototypesController < ApplicationController
   before_action :move_to_index, except:[:index, :show]
 
   def index
-    @prototypes = Prototype.all
+    @prototype = Prototype.all
   end
 
   def new
     @prototype = Prototype.new
-   
   end
 
   def create
+
      # new protで空白を入力するとその場所にとどまる
      @prototype = Prototype.create(prototype_params)
       if @prototype.save
@@ -19,6 +19,7 @@ class PrototypesController < ApplicationController
      else
        render :new, status: :unprocessable_entity
      end
+
   end
 
   def show
@@ -33,6 +34,7 @@ class PrototypesController < ApplicationController
 
   def update
     # 空白文字を入力するとその場所にとどまる
+
     @prototype = Prototype.find(params[:id])
     if  @prototype.update(prototype_params)
         redirect_to prototype_path
