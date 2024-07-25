@@ -1,4 +1,8 @@
 class PrototypesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :destroy, :edit]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy] # アクション前にset_prototypeを呼び出している
+  before_action :move_to_index, only: :edit
+  # ユーザーじゃない人がindex show以外にアクセスすると実行する関数
   def index
     @prototype = Prototype.all
   end
@@ -49,5 +53,16 @@ class PrototypesController < ApplicationController
 
   def prototype_params
     params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
+  end
+
+  def set_prototype
+    @prototype = Prototype.find(params[:id])
+  end
+
+  # 直接url入力するとリダイレクトで初期画面に飛ぶ
+  def move_to_index
+    return if current_user == @prototype.user
+
+    redirect_to user_session_path
   end
 end
